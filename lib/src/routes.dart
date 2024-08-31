@@ -15,7 +15,7 @@ class AppRoutes {
       case signIn:
         return CupertinoPageRoute(builder: (_) => SignInPage());
       case signUp:
-        return CupertinoPageRoute(builder: (_) => SignUpPage());
+        return CupertinoPageRoute(builder: (_) => SignUp());
       default:
         return CupertinoPageRoute(
           builder: (_) => CupertinoPageScaffold(
@@ -34,7 +34,7 @@ class AppRoutes {
     return {
       index: (_) => IndexPage(),
       signIn: (_) => SignInPage(),
-      signUp: (_) => SignUpPage(),
+      signUp: (_) => SignUp(),
     };
   }
 }

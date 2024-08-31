@@ -45,7 +45,7 @@ class IndexPage extends StatelessWidget {
             trailing: Icon(Icons.chevron_right),
             onTap: () {
               Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => SignUpPage()),
+                MaterialPageRoute(builder: (context) => SignUp()),
               );
             },
           ),

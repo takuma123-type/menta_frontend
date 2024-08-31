@@ -1,14 +1,13 @@
-import 'package:flutter/cupertino.dart';
-import 'package:menta_frontend/src/components/pages/Tag.dart';
+import 'package:flutter/material.dart';
 import 'package:menta_frontend/src/components/pages/SignIn.dart';
 import 'package:menta_frontend/src/components/pages/SignUp.dart';
 
 class IndexPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
-        middle: Text(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
           'Main',
           style: TextStyle(
             fontWeight: FontWeight.bold,
@@ -16,60 +15,39 @@ class IndexPage extends StatelessWidget {
           ),
         ),
       ),
-      child: ListView(
+      body: ListView(
         children: [
-          CupertinoListSection.insetGrouped(
-            header: Text('User Actions'),
-            children: [
-              CupertinoListTile(
-                leading: Icon(CupertinoIcons.tag),
-                title: Text(
-                  'Tags',
-                  style: TextStyle(
-                    color: CupertinoColors.activeBlue,
-                    fontSize: 18,
-                  ),
-                ),
-                trailing: CupertinoListTileChevron(),
-                onTap: () {
-                  Navigator.of(context).push(
-                    CupertinoPageRoute(builder: (context) => TagPage()),
-                  );
-                },
+          ListTile(
+            leading: Icon(Icons.person),
+            title: Text(
+              'Sign In',
+              style: TextStyle(
+                color: Colors.green,
+                fontSize: 18,
               ),
-              CupertinoListTile(
-                leading: Icon(CupertinoIcons.person),
-                title: Text(
-                  'Sign In',
-                  style: TextStyle(
-                    color: CupertinoColors.activeGreen,
-                    fontSize: 18,
-                  ),
-                ),
-                trailing: CupertinoListTileChevron(),
-                onTap: () {
-                  Navigator.of(context).push(
-                    CupertinoPageRoute(builder: (context) => SignInPage()),
-                  );
-                },
+            ),
+            trailing: Icon(Icons.chevron_right),
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => SignInPage()),
+              );
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.person_add),
+            title: Text(
+              'Sign Up',
+              style: TextStyle(
+                color: Colors.orange,
+                fontSize: 18,
               ),
-              CupertinoListTile(
-                leading: Icon(CupertinoIcons.person_add),
-                title: Text(
-                  'Sign Up',
-                  style: TextStyle(
-                    color: CupertinoColors.activeOrange,
-                    fontSize: 18,
-                  ),
-                ),
-                trailing: CupertinoListTileChevron(),
-                onTap: () {
-                  Navigator.of(context).push(
-                    CupertinoPageRoute(builder: (context) => SignUpPage()),
-                  );
-                },
-              ),
-            ],
+            ),
+            trailing: Icon(Icons.chevron_right),
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => SignUpPage()),
+              );
+            },
           ),
         ],
       ),

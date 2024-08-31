@@ -1,11 +1,11 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class SignInPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
-        middle: Text(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
           'Sign In',
           style: TextStyle(
             fontWeight: FontWeight.bold,
@@ -13,42 +13,42 @@ class SignInPage extends StatelessWidget {
           ),
         ),
       ),
-      child: Padding(
+      body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            CupertinoTextField(
-              placeholder: 'Email',
-              padding: EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: CupertinoColors.systemGrey6,
-                borderRadius: BorderRadius.circular(12),
+            TextField(
+              decoration: InputDecoration(
+                labelText: 'Email',
+                border: OutlineInputBorder(),
+                filled: true,
+                fillColor: Colors.grey[200],
               ),
               keyboardType: TextInputType.emailAddress,
             ),
             SizedBox(height: 16),
-            CupertinoTextField(
-              placeholder: 'Password',
-              padding: EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: CupertinoColors.systemGrey6,
-                borderRadius: BorderRadius.circular(12),
+            TextField(
+              decoration: InputDecoration(
+                labelText: 'Password',
+                border: OutlineInputBorder(),
+                filled: true,
+                fillColor: Colors.grey[200],
               ),
               obscureText: true,
             ),
             SizedBox(height: 24),
-            CupertinoButton.filled(
+            ElevatedButton(
               child: Text('Sign In'),
               onPressed: () {
                 // Sign In処理をここに追加
               },
             ),
             SizedBox(height: 16),
-            CupertinoButton(
+            TextButton(
               child: Text(
                 'Forgot Password?',
-                style: TextStyle(color: CupertinoColors.systemBlue),
+                style: TextStyle(color: Colors.blue),
               ),
               onPressed: () {
                 // パスワードリセット処理
@@ -59,13 +59,12 @@ class SignInPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text('Don\'t have an account?'),
-                CupertinoButton(
+                TextButton(
                   child: Text(
                     'Sign Up',
-                    style: TextStyle(color: CupertinoColors.systemBlue),
+                    style: TextStyle(color: Colors.blue),
                   ),
                   onPressed: () {
-                    // Sign Upページへの遷移
                   },
                 ),
               ],

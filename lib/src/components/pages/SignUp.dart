@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:menta_frontend/src/usecases/CreateUserUsecase.dart';
 import 'package:menta_frontend/src/infrastructure/repositories/UsersRepository.dart';
 
@@ -33,20 +33,20 @@ class _SignUpPageState extends State<SignUpPage> {
 
     try {
       await _createUserUsecase.execute(input);
-      // サインアップが成功した場合の処理
+ 
       print('User created successfully');
-      showCupertinoDialog(
+      showDialog(
         context: context,
         builder: (BuildContext context) {
-          return CupertinoAlertDialog(
+          return AlertDialog(
             title: Text('作成完了'),
             content: Text('ログインページに遷移します。'),
             actions: <Widget>[
-              CupertinoDialogAction(
+              TextButton(
                 child: Text('Go to Home'),
                 onPressed: () {
-                  Navigator.of(context).pop(); // ダイアログを閉じる
-                  Navigator.of(context).pushReplacementNamed('/'); // ホームページに遷移
+                  Navigator.of(context).pop();
+                  Navigator.of(context).pushReplacementNamed('/sign-in');
                 },
               ),
             ],
@@ -54,19 +54,18 @@ class _SignUpPageState extends State<SignUpPage> {
         },
       );
     } catch (error) {
-      // エラーが発生した場合の処理
       print('Failed to create user: $error');
-      showCupertinoDialog(
+      showDialog(
         context: context,
         builder: (BuildContext context) {
-          return CupertinoAlertDialog(
+          return AlertDialog(
             title: Text('Error'),
             content: Text('Failed to create user. Please try again.'),
             actions: <Widget>[
-              CupertinoDialogAction(
+              TextButton(
                 child: Text('OK'),
                 onPressed: () {
-                  Navigator.of(context).pop(); // ダイアログを閉じる
+                  Navigator.of(context).pop();
                 },
               ),
             ],
@@ -78,28 +77,32 @@ class _SignUpPageState extends State<SignUpPage> {
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
-        middle: Text('Sign Up'),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('新規登録'),
       ),
-      child: Padding(
+      body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            CupertinoTextField(
+            TextField(
               controller: _firstNameController,
-              placeholder: 'First Name',
-              padding: EdgeInsets.all(16),
+              decoration: InputDecoration(
+                labelText: 'First Name',
+                border: OutlineInputBorder(),
+              ),
             ),
             SizedBox(height: 16),
-            CupertinoTextField(
+            TextField(
               controller: _lastNameController,
-              placeholder: 'Last Name',
-              padding: EdgeInsets.all(16),
+              decoration: InputDecoration(
+                labelText: 'Last Name',
+                border: OutlineInputBorder(),
+              ),
             ),
             SizedBox(height: 24),
-            CupertinoButton.filled(
+            ElevatedButton(
               child: Text('新規登録'),
               onPressed: _handleSignUp,
             ),

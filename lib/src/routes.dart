@@ -1,14 +1,21 @@
 import 'package:flutter/cupertino.dart';
 import 'package:menta_frontend/src/components/pages/index.dart';
+import 'package:menta_frontend/src/components/pages/SignIn.dart';
+import 'package:menta_frontend/src/components/pages/SignUp.dart';
 
 class AppRoutes {
   static const String index = '/';
-  static const String another = '/another';
+  static const String signIn = '/sign-in';
+  static const String signUp = '/sign-up';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case index:
         return CupertinoPageRoute(builder: (_) => IndexPage());
+      case signIn:
+        return CupertinoPageRoute(builder: (_) => SignInPage());
+      case signUp:
+        return CupertinoPageRoute(builder: (_) => SignUpPage());
       default:
         return CupertinoPageRoute(
           builder: (_) => CupertinoPageScaffold(
@@ -22,4 +29,13 @@ class AppRoutes {
         );
     }
   }
+
+  static Map<String, WidgetBuilder> routes() {
+    return {
+      index: (_) => IndexPage(),
+      signIn: (_) => SignInPage(),
+      signUp: (_) => SignUpPage(),
+    };
+  }
 }
+
